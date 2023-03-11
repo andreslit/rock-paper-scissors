@@ -24,7 +24,7 @@ function playRound(playerSelection, computerSelection) {
     
     if (!["rock", "paper", "scissors"].includes(playerSelection)) {
         console.log("Input has to be rock, paper or scissors")
-        return
+        return -1
     }
 
     let choiceMap = new Map();
@@ -50,7 +50,13 @@ function game() {
     computerScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        roundResult = playRound(prompt(), getComputerChoice())
+        
+        do {
+            playerSelection = prompt()
+            roundResult = playRound(playerSelection, getComputerChoice())
+        } while (roundResult == -1)
+        
+
 
         console.log(roundResult)
 
